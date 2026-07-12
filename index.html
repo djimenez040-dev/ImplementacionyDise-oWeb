@@ -1,79 +1,357 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marcando Huella - Placas premium de identificación para mascotas de acero inoxidable.">
-    <meta name="keywords" content="placas para mascotas, placas premium, identificación para perros, acero inoxidable">
+
+    <meta name="description" content="Marcando Huella: placas premium de identificación para mascotas, fabricadas en acero inoxidable y personalizadas con grabado láser.">
+    <meta name="keywords" content="placas para mascotas, identificación para perros, identificación para gatos, placas personalizadas, acero inoxidable">
     <meta name="author" content="Marcando Huella">
 
-    <title>Marcando Huella | Placas Premium para Mascotas</title>
+    <title>Marcando Huella | Placas premium para mascotas</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
-    <header>
-        <h1>Marcando Huella</h1>
-        <h2>Placas Premium de Identificación para Mascotas</h2>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#inicio" aria-label="Ir al inicio de Marcando Huella">
+                <span class="brand-mark" aria-hidden="true">🐾</span>
+                <span class="brand-text">
+                    <strong>Marcando</strong>
+                    <span>Huella</span>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a class="nav-cta" href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <main id="contenido-principal">
+        <section class="hero" id="inicio" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="eyebrow">Identificación con estilo y seguridad</p>
 
-        <section>
-            <h3>¿Quiénes somos?</h3>
+                    <h1 id="hero-title">
+                        Placas premium que
+                        <span>marcan la diferencia</span>
+                    </h1>
 
-            <p>
-                En <strong>Marcando Huella</strong> diseñamos placas premium de identificación
-                para mascotas fabricadas en acero inoxidable con acabado espejo, ofreciendo
-                elegancia, durabilidad y seguridad para perros y gatos.
-            </p>
+                    <p class="hero-description">
+                        Diseñamos placas personalizadas para perros y gatos,
+                        fabricadas en acero inoxidable y grabadas con láser para
+                        ofrecer resistencia, elegancia y tranquilidad.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#productos">
+                            Conocer productos
+                        </a>
+
+                        <a class="button button-secondary" href="#contacto">
+                            Solicitar cotización
+                        </a>
+                    </div>
+
+                    <ul class="hero-features" aria-label="Características principales">
+                        <li>Acero inoxidable</li>
+                        <li>Grabado permanente</li>
+                        <li>Diseños personalizados</li>
+                    </ul>
+                </div>
+
+                <figure class="hero-visual">
+                    <div class="product-showcase" role="img" aria-label="Representación de una placa premium para mascota">
+                        <div class="tag-hole" aria-hidden="true"></div>
+                        <div class="tag-content">
+                            <span class="paw-icon" aria-hidden="true">🐾</span>
+                            <strong>LOLA</strong>
+                            <small>55 1234 5678</small>
+                        </div>
+                    </div>
+
+                    <figcaption>
+                        Diseño conceptual de placa personalizada.
+                    </figcaption>
+                </figure>
+            </div>
         </section>
 
-        <section>
-            <h3>Nuestros acabados</h3>
+        <section class="section section-dark" id="nosotros" aria-labelledby="nosotros-title">
+            <div class="container split-layout">
+                <div class="section-heading">
+                    <p class="eyebrow">Nuestra esencia</p>
+                    <h2 id="nosotros-title">¿Quiénes somos?</h2>
+                </div>
 
-            <ul>
-                <li>Negro</li>
-                <li>Plata</li>
-                <li>Oro</li>
-                <li>Azul</li>
-                <li>Oro Rosa</li>
-            </ul>
+                <div class="about-content">
+                    <p class="lead">
+                        Somos una empresa que busca plasmar la identidad y el amor
+                        por cada mascota, creando conexiones con nuestros clientes
+                        y marcando huella en cada producto.
+                    </p>
+
+                    <p>
+                        En Marcando Huella combinamos diseño, calidad y funcionalidad.
+                        Cada placa está pensada para proteger a la mascota y, al mismo
+                        tiempo, reflejar su personalidad mediante acabados modernos y
+                        datos de contacto grabados de forma permanente.
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h3>Producto más vendido</h3>
+        <section class="section" id="productos" aria-labelledby="productos-title">
+            <div class="container">
+                <header class="section-intro">
+                    <p class="eyebrow">Colección destacada</p>
+                    <h2 id="productos-title">Productos para cada personalidad</h2>
+                    <p>
+                        Elige la forma y el acabado que mejor representen a tu mascota.
+                    </p>
+                </header>
 
-            <p>
-                Nuestra placa más popular tiene forma de <strong>hueso largo</strong>,
-                fabricada en acero inoxidable con acabado espejo y un elegante
-                <strong>troquel en forma de huella de perro</strong> ubicado en la
-                parte inferior izquierda.
-            </p>
+                <div class="card-grid">
+                    <article class="product-card">
+                        <div class="product-image bone-tag" aria-hidden="true">
+                            <span>🐾</span>
+                        </div>
 
-            <p>
-                Este diseño combina estilo, resistencia y personalización,
-                permitiendo grabar el nombre de la mascota y los datos de contacto
-                del propietario mediante grabado láser permanente.
-            </p>
+                        <div class="card-content">
+                            <h3>Placa Hueso</h3>
+                            <p>
+                                Nuestro modelo más popular, ideal para perros de todos
+                                los tamaños.
+                            </p>
+                            <a href="#contacto">Cotizar modelo</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image round-tag" aria-hidden="true">
+                            <span>🐾</span>
+                        </div>
+
+                        <div class="card-content">
+                            <h3>Placa Redonda</h3>
+                            <p>
+                                Diseño clásico y elegante con espacio para datos
+                                esenciales.
+                            </p>
+                            <a href="#contacto">Cotizar modelo</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image heart-tag" aria-hidden="true">
+                            <span>♥</span>
+                        </div>
+
+                        <div class="card-content">
+                            <h3>Placa Corazón</h3>
+                            <p>
+                                Una opción especial para expresar el cariño por tu
+                                compañero.
+                            </p>
+                            <a href="#contacto">Cotizar modelo</a>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="finishes" aria-labelledby="acabados-title">
+                    <h3 id="acabados-title">Acabados disponibles</h3>
+
+                    <ul class="finish-list">
+                        <li><span class="finish finish-black"></span>Negro</li>
+                        <li><span class="finish finish-silver"></span>Plata</li>
+                        <li><span class="finish finish-gold"></span>Oro</li>
+                        <li><span class="finish finish-blue"></span>Azul</li>
+                        <li><span class="finish finish-rose"></span>Oro rosa</li>
+                    </ul>
+                </aside>
+            </div>
         </section>
 
+        <section class="section section-accent" id="beneficios" aria-labelledby="beneficios-title">
+            <div class="container">
+                <header class="section-intro">
+                    <p class="eyebrow eyebrow-dark">Calidad que acompaña</p>
+                    <h2 id="beneficios-title">¿Por qué elegir Marcando Huella?</h2>
+                </header>
+
+                <div class="benefits-grid">
+                    <article class="benefit">
+                        <span class="benefit-number">01</span>
+                        <h3>Material resistente</h3>
+                        <p>
+                            Acero inoxidable preparado para el uso cotidiano de tu mascota.
+                        </p>
+                    </article>
+
+                    <article class="benefit">
+                        <span class="benefit-number">02</span>
+                        <h3>Grabado láser</h3>
+                        <p>
+                            Información clara, precisa y permanente para una mejor identificación.
+                        </p>
+                    </article>
+
+                    <article class="benefit">
+                        <span class="benefit-number">03</span>
+                        <h3>Diseño personalizado</h3>
+                        <p>
+                            Diferentes formas, acabados y estilos para crear una pieza única.
+                        </p>
+                    </article>
+
+                    <article class="benefit">
+                        <span class="benefit-number">04</span>
+                        <h3>Atención cercana</h3>
+                        <p>
+                            Acompañamiento durante la selección, personalización y entrega.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section" aria-labelledby="cta-title">
+            <div class="container cta-box">
+                <div>
+                    <p class="eyebrow">Crea una placa única</p>
+                    <h2 id="cta-title">La identidad de tu mascota merece dejar huella</h2>
+                </div>
+
+                <a class="button button-primary" href="#contacto">
+                    Comenzar pedido
+                </a>
+            </div>
+        </section>
+
+        <section class="section section-dark" id="contacto" aria-labelledby="contacto-title">
+            <div class="container contact-grid">
+                <div class="contact-copy">
+                    <p class="eyebrow">Hablemos</p>
+                    <h2 id="contacto-title">Solicita información</h2>
+                    <p>
+                        Cuéntanos qué placa deseas, el nombre de tu mascota y el
+                        acabado de tu preferencia. Nos pondremos en contacto contigo.
+                    </p>
+
+                    <address>
+                        <p><strong>Correo:</strong> contacto@marcandohuella.mx</p>
+                        <p><strong>WhatsApp:</strong> +52 55 0000 0000</p>
+                        <p><strong>Ubicación:</strong> Ciudad de México, México</p>
+                    </address>
+                </div>
+
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-field">
+                        <label for="nombre">Nombre completo</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Escribe tu nombre"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="correo">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="nombre@correo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="mascota">Nombre de la mascota</label>
+                        <input
+                            type="text"
+                            id="mascota"
+                            name="mascota"
+                            placeholder="Ejemplo: Lola"
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            rows="5"
+                            placeholder="Indica el modelo y acabado que te interesa"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button class="button button-primary" type="submit">
+                        Enviar solicitud
+                    </button>
+
+                    <p class="form-note">
+                        El formulario es visual; su funcionamiento se agregará con JavaScript o un servicio de formularios.
+                    </p>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <hr>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a class="brand brand-footer" href="#inicio">
+                    <span class="brand-mark" aria-hidden="true">🐾</span>
+                    <span class="brand-text">
+                        <strong>Marcando</strong>
+                        <span>Huella</span>
+                    </span>
+                </a>
 
-        <p>
-            &copy; 2026 Marcando Huella. Todos los derechos reservados.
-        </p>
+                <p>Placas premium de identificación para mascotas.</p>
+            </div>
 
-        <p>
-            Placas premium de identificación para mascotas.
-        </p>
+            <nav aria-label="Navegación del pie de página">
+                <h2 class="footer-title">Navegación</h2>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
 
+            <div>
+                <h2 class="footer-title">Síguenos</h2>
+                <ul class="social-links">
+                    <li><a href="#" aria-label="Visitar Instagram">Instagram</a></li>
+                    <li><a href="#" aria-label="Visitar Facebook">Facebook</a></li>
+                    <li><a href="#" aria-label="Contactar por WhatsApp">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Marcando Huella. Todos los derechos reservados.</p>
+        </div>
     </footer>
-
 </body>
-
 </html>
