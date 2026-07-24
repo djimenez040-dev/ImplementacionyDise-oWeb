@@ -1,357 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Marcando Huella: placas premium de identificación para mascotas, fabricadas en acero inoxidable y personalizadas con grabado láser.">
-    <meta name="keywords" content="placas para mascotas, identificación para perros, identificación para gatos, placas personalizadas, acero inoxidable">
-    <meta name="author" content="Marcando Huella">
-
-    <title>Marcando Huella | Placas premium para mascotas</title>
-
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Marcando Huella: catálogo de placas personalizadas para mascotas con grabado láser.">
+  <meta name="theme-color" content="#070b0d">
+  <title>Marcando Huella | Catálogo de placas para mascotas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="screen-overlay" data-close-panels></div>
 
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="#inicio" aria-label="Ir al inicio de Marcando Huella">
-                <span class="brand-mark" aria-hidden="true">🐾</span>
-                <span class="brand-text">
-                    <strong>Marcando</strong>
-                    <span>Huella</span>
-                </span>
-            </a>
+  <aside class="nav-sidebar" id="main-nav" aria-label="Navegación principal">
+    <a class="brand" href="#inicio" aria-label="Marcando Huella, inicio">
+      <img src="images/IMG-20260712-WA0010.jpg" alt="">
+      <span>Marcando Huella</span>
+    </a>
+    <nav>
+      <a href="#inicio"><span>01</span>Inicio</a>
+      <a href="#nosotros"><span>02</span>Nosotros</a>
+      <a href="#catalogo"><span>03</span>Catálogo</a>
+      <a href="#tipografias"><span>04</span>Tipografías</a>
+      <a href="#beneficios"><span>05</span>Beneficios</a>
+      <a href="#contacto"><span>06</span>Contacto</a>
+    </nav>
+    <p class="sidebar-note">Placas con identidad para compañeros inolvidables.</p>
+  </aside>
 
-            <nav class="main-nav" aria-label="Navegación principal">
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#beneficios">Beneficios</a></li>
-                    <li><a class="nav-cta" href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
+  <header class="mobile-header">
+    <button class="icon-button menu-trigger" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="mobile-brand" href="#inicio">Marcando Huella</a>
+    <button class="cart-trigger" type="button" aria-controls="cart-sidebar" aria-expanded="false">
+      Carrito <span class="cart-count" aria-label="0 artículos">0</span>
+    </button>
+  </header>
+
+  <button class="desktop-cart-trigger cart-trigger" type="button" aria-controls="cart-sidebar" aria-expanded="false">
+    Carrito <span class="cart-count" aria-label="0 artículos">0</span>
+  </button>
+
+  <aside class="cart-sidebar" id="cart-sidebar" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="cart-header">
+      <div><p class="eyebrow">Tu selección</p><h2 id="cart-title">Carrito</h2></div>
+      <button class="close-cart" type="button" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="cart-items" aria-live="polite"></div>
+    <div class="cart-empty">
+      <span aria-hidden="true">＋</span>
+      <p>Aún no agregas placas.</p>
+      <a href="#catalogo" data-close-cart>Explorar catálogo</a>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong id="cart-total">$0 MXN</strong></div>
+      <p><strong>Pedido por cotización</strong><span>Confirmaremos acabados y medidas contigo.</span></p>
+      <button class="button primary checkout-button" type="button">Solicitar por WhatsApp</button>
+      <button class="clear-cart" type="button">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Identificación con estilo y seguridad</p>
+          <h1 id="hero-title">Su historia merece <span>dejar huella.</span></h1>
+          <p class="hero-description">Elige la figura, escribe su nombre y prueba la tipografía que mejor represente a tu compañero.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#catalogo">Ver catálogo</a>
+            <button class="button secondary cart-trigger" type="button" aria-controls="cart-sidebar" aria-expanded="false">Abrir carrito</button>
+          </div>
+          <ul class="feature-list"><li>Acero inoxidable</li><li>Grabado permanente</li><li>Diseño personalizado</li></ul>
         </div>
-    </header>
-
-    <main id="contenido-principal">
-        <section class="hero" id="inicio" aria-labelledby="hero-title">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p class="eyebrow">Identificación con estilo y seguridad</p>
-
-                    <h1 id="hero-title">
-                        Placas premium que
-                        <span>marcan la diferencia</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        Diseñamos placas personalizadas para perros y gatos,
-                        fabricadas en acero inoxidable y grabadas con láser para
-                        ofrecer resistencia, elegancia y tranquilidad.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="#productos">
-                            Conocer productos
-                        </a>
-
-                        <a class="button button-secondary" href="#contacto">
-                            Solicitar cotización
-                        </a>
-                    </div>
-
-                    <ul class="hero-features" aria-label="Características principales">
-                        <li>Acero inoxidable</li>
-                        <li>Grabado permanente</li>
-                        <li>Diseños personalizados</li>
-                    </ul>
-                </div>
-
-                <figure class="hero-visual">
-                    <div class="product-showcase" role="img" aria-label="Representación de una placa premium para mascota">
-                        <div class="tag-hole" aria-hidden="true"></div>
-                        <div class="tag-content">
-                            <span class="paw-icon" aria-hidden="true">🐾</span>
-                            <strong>LOLA</strong>
-                            <small>55 1234 5678</small>
-                        </div>
-                    </div>
-
-                    <figcaption>
-                        Diseño conceptual de placa personalizada.
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section class="section section-dark" id="nosotros" aria-labelledby="nosotros-title">
-            <div class="container split-layout">
-                <div class="section-heading">
-                    <p class="eyebrow">Nuestra esencia</p>
-                    <h2 id="nosotros-title">¿Quiénes somos?</h2>
-                </div>
-
-                <div class="about-content">
-                    <p class="lead">
-                        Somos una empresa que busca plasmar la identidad y el amor
-                        por cada mascota, creando conexiones con nuestros clientes
-                        y marcando huella en cada producto.
-                    </p>
-
-                    <p>
-                        En Marcando Huella combinamos diseño, calidad y funcionalidad.
-                        Cada placa está pensada para proteger a la mascota y, al mismo
-                        tiempo, reflejar su personalidad mediante acabados modernos y
-                        datos de contacto grabados de forma permanente.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="productos" aria-labelledby="productos-title">
-            <div class="container">
-                <header class="section-intro">
-                    <p class="eyebrow">Colección destacada</p>
-                    <h2 id="productos-title">Productos para cada personalidad</h2>
-                    <p>
-                        Elige la forma y el acabado que mejor representen a tu mascota.
-                    </p>
-                </header>
-
-                <div class="card-grid">
-                    <article class="product-card">
-                        <div class="product-image bone-tag" aria-hidden="true">
-                            <span>🐾</span>
-                        </div>
-
-                        <div class="card-content">
-                            <h3>Placa Hueso</h3>
-                            <p>
-                                Nuestro modelo más popular, ideal para perros de todos
-                                los tamaños.
-                            </p>
-                            <a href="#contacto">Cotizar modelo</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image round-tag" aria-hidden="true">
-                            <span>🐾</span>
-                        </div>
-
-                        <div class="card-content">
-                            <h3>Placa Redonda</h3>
-                            <p>
-                                Diseño clásico y elegante con espacio para datos
-                                esenciales.
-                            </p>
-                            <a href="#contacto">Cotizar modelo</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image heart-tag" aria-hidden="true">
-                            <span>♥</span>
-                        </div>
-
-                        <div class="card-content">
-                            <h3>Placa Corazón</h3>
-                            <p>
-                                Una opción especial para expresar el cariño por tu
-                                compañero.
-                            </p>
-                            <a href="#contacto">Cotizar modelo</a>
-                        </div>
-                    </article>
-                </div>
-
-                <aside class="finishes" aria-labelledby="acabados-title">
-                    <h3 id="acabados-title">Acabados disponibles</h3>
-
-                    <ul class="finish-list">
-                        <li><span class="finish finish-black"></span>Negro</li>
-                        <li><span class="finish finish-silver"></span>Plata</li>
-                        <li><span class="finish finish-gold"></span>Oro</li>
-                        <li><span class="finish finish-blue"></span>Azul</li>
-                        <li><span class="finish finish-rose"></span>Oro rosa</li>
-                    </ul>
-                </aside>
-            </div>
-        </section>
-
-        <section class="section section-accent" id="beneficios" aria-labelledby="beneficios-title">
-            <div class="container">
-                <header class="section-intro">
-                    <p class="eyebrow eyebrow-dark">Calidad que acompaña</p>
-                    <h2 id="beneficios-title">¿Por qué elegir Marcando Huella?</h2>
-                </header>
-
-                <div class="benefits-grid">
-                    <article class="benefit">
-                        <span class="benefit-number">01</span>
-                        <h3>Material resistente</h3>
-                        <p>
-                            Acero inoxidable preparado para el uso cotidiano de tu mascota.
-                        </p>
-                    </article>
-
-                    <article class="benefit">
-                        <span class="benefit-number">02</span>
-                        <h3>Grabado láser</h3>
-                        <p>
-                            Información clara, precisa y permanente para una mejor identificación.
-                        </p>
-                    </article>
-
-                    <article class="benefit">
-                        <span class="benefit-number">03</span>
-                        <h3>Diseño personalizado</h3>
-                        <p>
-                            Diferentes formas, acabados y estilos para crear una pieza única.
-                        </p>
-                    </article>
-
-                    <article class="benefit">
-                        <span class="benefit-number">04</span>
-                        <h3>Atención cercana</h3>
-                        <p>
-                            Acompañamiento durante la selección, personalización y entrega.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section cta-section" aria-labelledby="cta-title">
-            <div class="container cta-box">
-                <div>
-                    <p class="eyebrow">Crea una placa única</p>
-                    <h2 id="cta-title">La identidad de tu mascota merece dejar huella</h2>
-                </div>
-
-                <a class="button button-primary" href="#contacto">
-                    Comenzar pedido
-                </a>
-            </div>
-        </section>
-
-        <section class="section section-dark" id="contacto" aria-labelledby="contacto-title">
-            <div class="container contact-grid">
-                <div class="contact-copy">
-                    <p class="eyebrow">Hablemos</p>
-                    <h2 id="contacto-title">Solicita información</h2>
-                    <p>
-                        Cuéntanos qué placa deseas, el nombre de tu mascota y el
-                        acabado de tu preferencia. Nos pondremos en contacto contigo.
-                    </p>
-
-                    <address>
-                        <p><strong>Correo:</strong> contacto@marcandohuella.mx</p>
-                        <p><strong>WhatsApp:</strong> +52 55 0000 0000</p>
-                        <p><strong>Ubicación:</strong> Ciudad de México, México</p>
-                    </address>
-                </div>
-
-                <form class="contact-form" action="#" method="post">
-                    <div class="form-field">
-                        <label for="nombre">Nombre completo</label>
-                        <input
-                            type="text"
-                            id="nombre"
-                            name="nombre"
-                            placeholder="Escribe tu nombre"
-                            autocomplete="name"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-field">
-                        <label for="correo">Correo electrónico</label>
-                        <input
-                            type="email"
-                            id="correo"
-                            name="correo"
-                            placeholder="nombre@correo.com"
-                            autocomplete="email"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-field">
-                        <label for="mascota">Nombre de la mascota</label>
-                        <input
-                            type="text"
-                            id="mascota"
-                            name="mascota"
-                            placeholder="Ejemplo: Lola"
-                        >
-                    </div>
-
-                    <div class="form-field">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea
-                            id="mensaje"
-                            name="mensaje"
-                            rows="5"
-                            placeholder="Indica el modelo y acabado que te interesa"
-                            required
-                        ></textarea>
-                    </div>
-
-                    <button class="button button-primary" type="submit">
-                        Enviar solicitud
-                    </button>
-
-                    <p class="form-note">
-                        El formulario es visual; su funcionamiento se agregará con JavaScript o un servicio de formularios.
-                    </p>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <a class="brand brand-footer" href="#inicio">
-                    <span class="brand-mark" aria-hidden="true">🐾</span>
-                    <span class="brand-text">
-                        <strong>Marcando</strong>
-                        <span>Huella</span>
-                    </span>
-                </a>
-
-                <p>Placas premium de identificación para mascotas.</p>
-            </div>
-
-            <nav aria-label="Navegación del pie de página">
-                <h2 class="footer-title">Navegación</h2>
-                <ul class="footer-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-
-            <div>
-                <h2 class="footer-title">Síguenos</h2>
-                <ul class="social-links">
-                    <li><a href="#" aria-label="Visitar Instagram">Instagram</a></li>
-                    <li><a href="#" aria-label="Visitar Facebook">Facebook</a></li>
-                    <li><a href="#" aria-label="Contactar por WhatsApp">WhatsApp</a></li>
-                </ul>
-            </div>
+        <div class="hero-art reveal">
+          <div class="pattern-card"><img src="images/IMG-20260712-WA0011.jpg" alt="Logotipo de Marcando Huella"></div>
+          <div class="quality-chip"><strong>Hecho para durar</strong><span>Calidad que acompaña sus aventuras</span></div>
         </div>
+      </div>
+    </section>
 
-        <div class="container footer-bottom">
-            <p>&copy; 2026 Marcando Huella. Todos los derechos reservados.</p>
+    <section class="section about" id="nosotros">
+      <div class="container split">
+        <div class="section-title reveal"><p class="eyebrow">Nuestra esencia</p><h2>Una identidad para cada historia.</h2></div>
+        <div class="about-copy reveal">
+          <p class="lead">Plasmamos la identidad y el amor por cada mascota en piezas que conectan, protegen y permanecen.</p>
+          <p>Cada placa se trabaja con atención al detalle. Nuestro catálogo está preparado para crecer con nuevas fotografías, acabados y colecciones.</p>
+          <img class="paw-seal" src="images/IMG-20260712-WA0015.jpg" alt="Huella distintiva de Marcando Huella" loading="lazy">
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <section class="section catalog" id="catalogo">
+      <div class="container">
+        <div class="catalog-heading reveal">
+          <div class="section-intro"><p class="eyebrow">Catálogo</p><h2>Encuentra su próxima placa.</h2><p>Las imágenes son espacios provisionales listos para sustituirse por las fotografías reales.</p></div>
+          <div class="catalog-tools">
+            <label class="search-field"><span>Buscar figura</span><input id="catalog-search" type="search" placeholder="Ej. hueso, gato, corazón…"></label>
+            <label><span>Mostrar</span><select id="catalog-filter"><option value="all">Todas las figuras</option><option value="troquelada">Con troquelado</option><option value="clasica">Clásicas</option><option value="animal">Figuras de animal</option></select></label>
+          </div>
+        </div>
+        <p class="catalog-results" id="catalog-results" aria-live="polite"></p>
+        <div class="catalog-grid" id="catalog-grid"></div>
+      </div>
+    </section>
+
+    <section class="section type-section" id="tipografias">
+      <div class="container">
+        <div class="section-intro reveal"><p class="eyebrow">Personalización</p><h2>Doce formas de escribir su nombre.</h2><p>Estas muestras utilizan las fuentes instaladas en el equipo. Si el sitio se publica, será necesario incorporar archivos web de cada tipografía.</p></div>
+        <div class="font-grid" id="font-grid"></div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="beneficios">
+      <div class="container">
+        <div class="section-intro reveal"><p class="eyebrow dark">Por qué elegirnos</p><h2>Diseñadas para verse bien. Creadas para proteger.</h2></div>
+        <div class="benefit-grid">
+          <article><b>01</b><h3>Resistentes</h3><p>Materiales preparados para el ritmo de cada aventura.</p></article>
+          <article><b>02</b><h3>Legibles</h3><p>Grabado nítido para mantener visibles los datos esenciales.</p></article>
+          <article><b>03</b><h3>Únicas</h3><p>Figura y tipografía elegidas para cada personalidad.</p></article>
+          <article><b>04</b><h3>Con propósito</h3><p>Una forma sencilla de ayudarle a volver a casa.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal"><p class="eyebrow">Hablemos</p><h2>¿Buscas algo especial?</h2><p>Cuéntanos tu idea o agrega las placas al carrito para enviarnos una solicitud detallada.</p><div class="brand-panel"><img src="images/IMG-20260712-WA0005.jpg" alt="Monograma Marcando Huella" loading="lazy"></div></div>
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-row">
+            <label>Nombre<input name="nombre" autocomplete="name" required placeholder="Tu nombre"><small></small></label>
+            <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" required placeholder="55 1234 5678"><small></small></label>
+          </div>
+          <label>Correo electrónico<input name="email" type="email" autocomplete="email" required placeholder="nombre@correo.com"><small></small></label>
+          <label>Mensaje<textarea name="mensaje" rows="5" required placeholder="Describe la placa que tienes en mente"></textarea><small></small></label>
+          <button class="button primary" type="submit">Enviar por WhatsApp</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="brand" href="#inicio"><img src="images/IMG-20260712-WA0010.jpg" alt=""><span>Marcando Huella</span></a><p>Placas con identidad para compañeros inolvidables.</p><p>© <span id="year"></span> Marcando Huella</p></div></footer>
+  <button class="to-top" type="button" aria-label="Volver arriba">↑</button>
 </body>
 </html>
