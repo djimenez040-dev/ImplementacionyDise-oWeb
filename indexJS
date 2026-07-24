@@ -1,0 +1,278 @@
+// =========================================================
+// DATOS PRINCIPALES DEL CATÁLOGO
+// Cada objeto representa una figura disponible. Esta estructura permite
+// agregar nuevos productos sin escribir manualmente nuevas tarjetas en HTML.
+// =========================================================
+const products = [
+  { id: "redondo-chico-corazon", name: "Redondo chico con corazón troquelado", group: "troquelada", shape: "round", mark: "♡" },
+  { id: "hueso-largo-huella", name: "Hueso largo con huella troquelada", group: "troquelada", shape: "bone", mark: "🐾" },
+  { id: "rombo", name: "Rombo", group: "clasica", shape: "diamond", mark: "MH" },
+  { id: "estrella", name: "Estrella", group: "clasica", shape: "star", mark: "★" },
+  { id: "hueso-grande-huella", name: "Hueso grande con huella troquelada", group: "troquelada", shape: "bone", mark: "🐾" },
+  { id: "hueso-grande", name: "Hueso grande", group: "clasica", shape: "bone", mark: "MH" },
+  { id: "ovalo", name: "Óvalo", group: "clasica", shape: "oval", mark: "MH" },
+  { id: "ovalo-corazon", name: "Óvalo con corazón troquelado", group: "troquelada", shape: "oval", mark: "♡" },
+  { id: "hueso-largo", name: "Hueso largo", group: "clasica", shape: "bone", mark: "MH" },
+  { id: "hueso-chico", name: "Hueso chico", group: "clasica", shape: "bone", mark: "MH" },
+  { id: "corazon-mediano", name: "Corazón mediano", group: "clasica", shape: "heart", mark: "♥" },
+  { id: "corazon-chico", name: "Corazón chico", group: "clasica", shape: "heart", mark: "♥" },
+  { id: "redondo-grande", name: "Redondo grande", group: "clasica", shape: "round", mark: "MH" },
+  { id: "redondo-mediano", name: "Redondo mediano", group: "clasica", shape: "round", mark: "MH" },
+  { id: "pez", name: "Pez", group: "animal", shape: "fish", mark: "🐟" },
+  { id: "gato-bigotes", name: "Gato con bigotes", group: "animal", shape: "cat", mark: "😺" },
+  { id: "gato-sin-bigotes", name: "Gato sin bigotes", group: "animal", shape: "cat", mark: "🐱" }
+];
+const UNIT_PRICE = 110;
+
+// Tipografías disponibles para personalizar el nombre de la mascota.
+// El valor "family" debe coincidir con el nombre de la fuente instalada.
+const fonts = [
+  { sample: "Luna", family: "Alex Brush" }, { sample: "Simba", family: "Oregano" },
+  { sample: "Kira", family: "Gloria Hallelujah" }, { sample: "Rocky", family: "Shadows Into Light" },
+  { sample: "Menta", family: "Allura" }, { sample: "Canela", family: "Antonio" },
+  { sample: "Lucas", family: "Caveat" }, { sample: "Bonnie", family: "Mogra" },
+  { sample: "Nala", family: "Sacramento" }, { sample: "Chato", family: "Montserrat" },
+  { sample: "Ginger", family: "Neucha" }, { sample: "Bruno", family: "Euphoria Script" }
+];
+
+const fontOptions = fonts.map(font => `<option value="${font.family}">${font.sample} · ${font.family}</option>`).join("");
+const catalogGrid = document.querySelector("#catalog-grid");
+const resultsText = document.querySelector("#catalog-results");
+const searchInput = document.querySelector("#catalog-search");
+const filterInput = document.querySelector("#catalog-filter");
+
+// Recupera el carrito guardado en el navegador. Si todavía no existe,
+// se utiliza un arreglo vacío para comenzar una compra nueva.
+let cart = JSON.parse(localStorage.getItem("marcandoHuellaCart") || "[]");
+
+// Crea el código HTML de una tarjeta del catálogo a partir de un producto.
+function productCard(product) {
+  return `<article class="catalog-card reveal" data-name="${product.name.toLowerCase()}" data-group="${product.group}">
+    <div class="catalog-placeholder"><div class="shape-preview ${product.shape}"><span>${product.mark}</span></div></div>
+    <div class="catalog-body">
+      <p class="eyebrow">Figura</p><h3>${product.name}</h3>
+      <p class="catalog-meta">Personalizable · Fotografía pendiente</p>
+      <p class="catalog-price">$${UNIT_PRICE} MXN</p>
+      <div class="product-config">
+        <label>Nombre a grabar<input class="pet-name" maxlength="18" placeholder="Ej. Luna"></label>
+        <label>Tipografía<select class="font-select">${fontOptions}</select></label>
+        <div class="name-preview" aria-label="Vista previa del nombre" style="font-family:'${fonts[0].family}',cursive">Tu mascota</div>
+        <button class="add-to-cart" type="button" data-id="${product.id}">Agregar al carrito</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+// Dibuja todas las tarjetas del catálogo y activa sus eventos interactivos.
+function renderCatalog() {
+  catalogGrid.innerHTML = products.map(productCard).join("");
+  bindCatalog();
+  filterCatalog();
+  document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
+}
+
+// Conecta los campos de nombre y tipografía con la vista previa.
+// También registra el evento que agrega cada placa al carrito.
+function bindCatalog() {
+  catalogGrid.querySelectorAll(".catalog-card").forEach(card => {
+    const nameInput = card.querySelector(".pet-name");
+    const fontSelect = card.querySelector(".font-select");
+    const preview = card.querySelector(".name-preview");
+    const updatePreview = () => {
+      preview.textContent = nameInput.value.trim() || "Tu mascota";
+      preview.style.fontFamily = `'${fontSelect.value}', cursive`;
+    };
+    nameInput.addEventListener("input", updatePreview);
+    fontSelect.addEventListener("change", updatePreview);
+    card.querySelector(".add-to-cart").addEventListener("click", event => {
+      const product = products.find(item => item.id === event.currentTarget.dataset.id);
+      addToCart(product, nameInput.value.trim() || "Sin nombre", fontSelect.value);
+      event.currentTarget.textContent = "Agregado ✓";
+      event.currentTarget.classList.add("added");
+      setTimeout(() => { event.currentTarget.textContent = "Agregar al carrito"; event.currentTarget.classList.remove("added");
+       }, 1200);
+    });
+  });
+}
+
+// Filtra las tarjetas según el texto de búsqueda y la categoría seleccionada.
+function filterCatalog() {
+  const query = searchInput.value.trim().toLowerCase();
+  const group = filterInput.value;
+  let visible = 0;
+  catalogGrid.querySelectorAll(".catalog-card").forEach(card => {
+    const show = card.dataset.name.includes(query) && (group === "all" || card.dataset.group === group);
+    card.hidden = !show;
+    if (show) visible++;
+  });
+  resultsText.textContent = `${visible} ${visible === 1 ? "figura disponible" : "figuras disponibles"}`;
+}
+searchInput.addEventListener("input", filterCatalog);
+filterInput.addEventListener("change", filterCatalog);
+
+// Genera automáticamente las muestras visuales de todas las tipografías.
+document.querySelector("#font-grid").innerHTML = fonts.map(font =>
+  `<article class="font-card reveal"><span>${font.family}</span><strong style="font-family:'${font.family}',cursive">
+  ${font.sample}</strong></article>`
+).join("");
+
+// Guarda el estado actual del carrito en localStorage y actualiza su contenido.
+function saveCart() {
+  localStorage.setItem("marcandoHuellaCart", JSON.stringify(cart));
+  renderCart();
+}
+
+// Agrega un artículo nuevo o aumenta su cantidad si ya existe la misma
+// combinación de figura, nombre y tipografía.
+function addToCart(product, petName, font) {
+  const existing = cart.find(item => item.id === product.id && item.petName === petName && item.font === font);
+  if (existing) existing.quantity++;
+  else cart.push({ id: product.id, name: product.name, petName, font, quantity: 1 });
+  saveCart();
+}
+
+// Actualiza contador, artículos, subtotales y total general del carrito.
+function renderCart() {
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = itemCount * UNIT_PRICE;
+  document.querySelectorAll(".cart-count").forEach(counter => {
+    counter.textContent = itemCount;
+    counter.setAttribute("aria-label", `${itemCount} ${itemCount === 1 ? "artículo" : "artículos"}`);
+  });
+  const sidebar = document.querySelector("#cart-sidebar");
+  document.querySelector("#cart-total").textContent = `$${total.toLocaleString("es-MX")} MXN`;
+  sidebar.classList.toggle("has-items", cart.length > 0);
+  document.querySelector(".cart-items").innerHTML = cart.map((item, index) =>
+    `<article class="cart-item">
+      <div class="cart-thumb">${String(index + 1).padStart(2, "0")}</div>
+      <div><h3>${item.name}</h3><p>${item.petName} · ${item.font}</p><p>$${(item.quantity * UNIT_PRICE).toLocaleString("es-MX")
+      } MXN</p><button class="remove-item" data-action="remove" data-index="${index}">Eliminar</button></div>
+      <div class="item-actions"><button data-action="minus" data-index="${index}" aria-label=
+      "Reducir cantidad">−</button><span>${item.quantity}</span><button data-action="plus"
+       data-index="${index}" aria-label="Aumentar cantidad">+</button></div>
+    </article>`
+  ).join("");
+}
+
+// Atiende los botones para aumentar, disminuir o eliminar artículos.
+document.querySelector(".cart-items").addEventListener("click", event => {
+  const button = event.target.closest("button[data-action]");
+  if (!button) return;
+  const index = Number(button.dataset.index);
+  if (button.dataset.action === "plus") cart[index].quantity++;
+  if (button.dataset.action === "minus") cart[index].quantity--;
+  if (button.dataset.action === "remove" || cart[index].quantity <= 0) cart.splice(index, 1);
+  saveCart();
+});
+document.querySelector(".clear-cart").addEventListener("click", () => { cart = []; saveCart(); });
+
+// =========================================================
+// MENÚ LATERAL Y CARRITO DESLIZABLE
+// Controla la apertura, cierre y fondo oscuro de ambos paneles.
+// =========================================================
+const navSidebar = document.querySelector(".nav-sidebar");
+const cartSidebar = document.querySelector(".cart-sidebar");
+const overlay = document.querySelector(".screen-overlay");
+const menuTrigger = document.querySelector(".menu-trigger");
+function updateOverlay() {
+  const visible = navSidebar.classList.contains("open") || cartSidebar.classList.contains("open");
+  overlay.classList.toggle("visible", visible);
+  document.body.classList.toggle("panel-open", visible);
+}
+
+// Abre el carrito y cierra el menú principal para evitar paneles superpuestos.
+function openCart() {
+  navSidebar.classList.remove("open");
+  cartSidebar.classList.add("open");
+  cartSidebar.setAttribute("aria-hidden", "false");
+  document.querySelectorAll(".cart-trigger").forEach(button => button.setAttribute("aria-expanded", "true"));
+  menuTrigger.setAttribute("aria-expanded", "false");
+  updateOverlay();
+}
+
+// Cierra todos los paneles y restablece los atributos de accesibilidad.
+function closePanels() {
+  navSidebar.classList.remove("open");
+  cartSidebar.classList.remove("open");
+  cartSidebar.setAttribute("aria-hidden", "true");
+  menuTrigger.setAttribute("aria-expanded", "false");
+  document.querySelectorAll(".cart-trigger").forEach(button => button.setAttribute("aria-expanded", "false"));
+  updateOverlay();
+}
+menuTrigger.addEventListener("click", () => {
+  const open = navSidebar.classList.toggle("open");
+  cartSidebar.classList.remove("open");
+  menuTrigger.setAttribute("aria-expanded", String(open));
+  updateOverlay();
+});
+document.querySelectorAll(".cart-trigger").forEach(button => button.addEventListener("click", openCart));
+document.querySelector(".close-cart").addEventListener("click", closePanels);
+document.querySelectorAll("[data-close-panels],[data-close-cart]").forEach(element => 
+  element.addEventListener("click", closePanels));
+navSidebar.querySelectorAll("a").forEach(link => link.addEventListener("click", closePanels));
+document.addEventListener("keydown", event => { if (event.key === "Escape") closePanels(); });
+
+// Construye un resumen del pedido, calcula el total y abre WhatsApp
+// con el mensaje listo para que el usuario lo envíe.
+document.querySelector(".checkout-button").addEventListener("click", () => {
+  if (!cart.length) return;
+  const total = cart.reduce((sum, item) => sum + item.quantity * UNIT_PRICE, 0);
+  const lines = cart.map(item => `• ${item.quantity} x ${item.name} | Nombre: ${item.petName} | 
+    Letra: ${item.font} | $${item.quantity * UNIT_PRICE} MXN`).join("\n");
+  const message = encodeURIComponent(`Hola, quiero solicitar estas placas:\n\n${lines}\n\n
+    Total: $${total} MXN\n\n¿Me ayudan a confirmar acabados y medidas?`);
+  window.open(`https://wa.me/?text=${message}`, "_blank", "noopener,noreferrer");
+});
+
+// Muestra las secciones gradualmente cuando entran en el área visible.
+const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); }
+}), { threshold: .1 });
+document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
+
+// Marca en el menú lateral la sección que el usuario está consultando.
+const sections = [...document.querySelectorAll("main section[id]")];
+const navLinks = [...navSidebar.querySelectorAll('a[href^="#"]')];
+const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === 
+  `#${entry.target.id}`));
+}), { rootMargin: "-35% 0px -55%" });
+sections.forEach(section => sectionObserver.observe(section));
+
+// =========================================================
+// FORMULARIO DE CONTACTO
+// Valida campos obligatorios y correo antes de preparar el mensaje.
+// =========================================================
+const form = document.querySelector("#contact-form");
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  let valid = true;
+  form.querySelectorAll("[required]").forEach(field => {
+    const empty = !field.value.trim();
+    const badEmail = field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value);
+    const error = empty ? "Este campo es obligatorio." : badEmail ? "Escribe un correo válido." : "";
+    field.classList.toggle("invalid", Boolean(error));
+    field.closest("label").querySelector("small").textContent = error;
+    if (error) valid = false;
+  });
+  if (!valid) { form.querySelector(".invalid").focus(); return; }
+  const data = new FormData(form);
+  const message = encodeURIComponent(`Hola, soy ${data.get("nombre")}.\nTeléfono: ${data.get("telefono")}\nCorreo: 
+  ${data.get("email")}\n\n${data.get("mensaje")}`);
+  form.querySelector(".form-status").textContent = "Abriendo WhatsApp para enviar tu solicitud…";
+  window.open(`https://wa.me/?text=${message}`, "_blank", "noopener,noreferrer");
+});
+form.querySelectorAll("input,textarea").forEach(field => field.addEventListener("input", () => {
+  field.classList.remove("invalid");
+  field.closest("label").querySelector("small").textContent = "";
+}));
+
+// Muestra el botón para volver al inicio después de cierto desplazamiento.
+const topButton = document.querySelector(".to-top");
+window.addEventListener("scroll", () => topButton.classList.toggle("visible", scrollY > 600), { passive: true });
+topButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+// Inicialización de la página: carga catálogo y carrito al abrir el sitio.
+renderCatalog();
+renderCart();
