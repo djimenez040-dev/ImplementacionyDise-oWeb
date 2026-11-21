@@ -1,0 +1,5 @@
+<resources><style name="Theme.MarcandoHuella" parent="android:style/Theme.Material.NoActionBar">
+ <item name="android:fontFamily">sans</item><item name="android:windowLightStatusBar">false</item>
+ <item name="android:statusBarColor">#070B0D</item><item name="android:navigationBarColor">#070B0D</item>
+ <item name="android:windowActionModeOverlay">true</item><item name="android:colorAccent">#0EE1E5</item>
+</style></resources>
